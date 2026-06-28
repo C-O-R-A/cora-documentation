@@ -1,0 +1,7 @@
+# rosdoc2 cross-reference configuration
+# Place this file at cora_docs/cross_ref.yaml
+# Pass with --cross-reference-conf when calling rosdoc2
+
+# Tell rosdoc2 where the main Sphinx inventory file lives so
+# ROS package docs can cross-reference the Python SDK and vice-versa.
+inventory_url: ../_build/html/objects.inv

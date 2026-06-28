@@ -1,0 +1,20 @@
+# Sphinx build output
+_build/
+docs_build/
+cross_reference/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+
+# ROS 2 build artifacts
+build/
+install/
+log/
+
+# OS
+.DS_Store
+Thumbs.db

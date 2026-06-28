@@ -1,0 +1,45 @@
+# rosdoc2.yaml
+# Place a copy of this file at the root of each ROS package:
+#   cora_robot/src/<package_name>/rosdoc2.yaml
+#   cora_common/src/<package_name>/rosdoc2.yaml
+#   cora_desktop/src/<package_name>/rosdoc2.yaml
+#
+# rosdoc2 reads this automatically when it finds it in the package root.
+
+# Use Sphinx as the documentation builder
+builders:
+  - type: sphinx
+    sphinx_sourcedir: docs       # look for .rst/.md in <package>/docs/
+    output_dir: ""               # rosdoc2 sets this; we override via --output-dir
+    conf_overrides:
+      # ── Point at the CORA custom theme ──────────────────────────────
+      # Path is relative to the package's Sphinx source dir.
+      # We use a symlink or copy of _theme/cora/ inside each package.
+      # Alternatively, use an absolute path pointing back to cora_docs/_theme.
+      html_theme: "cora"
+      html_theme_path:
+        - "../../../../cora_docs/_theme"   # adjust depth to match your layout
+
+      # ── Inherit the same CSS tokens ──────────────────────────────────
+      html_css_files:
+        - "cora.css"
+
+      # ── Shared metadata ──────────────────────────────────────────────
+      project: "CORA"
+      html_title: "CORA Documentation"
+      html_short_title: "CORA Docs"
+
+      # ── Extensions matching the main conf.py ─────────────────────────
+      extensions:
+        - sphinx.ext.autodoc
+        - sphinx.ext.napoleon
+        - sphinx.ext.viewcode
+        - myst_parser
+
+      # ── Docstring style ───────────────────────────────────────────────
+      napoleon_google_docstring: true
+      napoleon_numpy_docstring: false
+      autodoc_typehints: "description"
+
+      # ── Pygments ─────────────────────────────────────────────────────
+      pygments_style: "monokai"

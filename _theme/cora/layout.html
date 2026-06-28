@@ -1,0 +1,157 @@
+{%- extends "basic/layout.html" %}
+
+{%- block htmltitle %}
+<title>{{ title|striptags|e }} — CORA Docs</title>
+{%- endblock %}
+
+{%- block extrahead %}
+<meta name="theme-color" content="#161B22">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+{%- endblock %}
+
+{%- block header %}
+<header class="cora-topbar">
+  <div class="cora-topbar-logo">
+    <a href="{{ pathto(master_doc) }}">
+      <div class="cora-logo-mark">CORA</div>
+      <div class="cora-logo-sub">Docs</div>
+    </a>
+  </div>
+  <div class="cora-topbar-search">
+    {%- block search_area %}
+    <form class="cora-search-form" action="{{ pathto('search') }}" method="get">
+      <input class="cora-search-input" type="text" name="q" placeholder="Search documentation…" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    {%- endblock %}
+  </div>
+  <div class="cora-topbar-meta">
+    <span class="cora-version-badge">v{{ version }}</span>
+    <a class="cora-topbar-link" href="{{ github_url | default('#') }}">GitHub</a>
+    <a class="cora-topbar-link" href="{{ pathto('pages/changelog') }}">Changelog</a>
+  </div>
+</header>
+{%- endblock %}
+
+{%- block content %}
+<div class="cora-layout">
+
+  <nav class="cora-sidebar" id="cora-sidebar">
+    {%- for section in toctree_sections %}
+    <div class="cora-nav-section{{ ' open' if section.active else '' }}" data-section="{{ section.key }}">
+      <div class="cora-nav-section-header" onclick="coraToggleSection(this)">
+        <span class="cora-nav-section-label">{{ section.title }}</span>
+        <span class="cora-chevron">▶</span>
+      </div>
+      <div class="cora-nav-items">
+        {%- for entry in section.entries %}
+        <a class="cora-nav-item{{ ' active' if entry.current else '' }}" href="{{ entry.url }}">
+          <span class="cora-nav-icon">{{ entry.icon | default('') }}</span>
+          {{ entry.title }}
+        </a>
+        {%- endfor %}
+      </div>
+    </div>
+    {%- if not loop.last %}<hr class="cora-nav-divider">{%- endif %}
+    {%- endfor %}
+
+    {%- if not toctree_sections %}
+    <div id="cora-toctree-raw" style="display:none">
+      {{ toctree(maxdepth=1, collapse=True, includehidden=True) }}
+    </div>
+    {%- endif %}
+  </nav>
+
+  <main class="cora-main">
+    <div class="cora-content">
+      {%- if parents %}
+      <div class="cora-page-eyebrow">
+        {%- for parent in parents %}{{ parent.title }}{% if not loop.last %} / {% endif %}{%- endfor %}
+      </div>
+      {%- endif %}
+      {%- block body %}{% endblock %}
+    </div>
+  </main>
+
+  <aside class="cora-toc-panel" id="cora-toc-panel">
+    <div class="cora-toc-panel-label">On this page</div>
+    {%- if display_toc %}{{ toc }}{%- endif %}
+  </aside>
+
+</div>
+{%- endblock %}
+
+{%- block footer %}
+<footer class="cora-footer">
+  <div class="cora-footer-inner">
+    <span>CORA Robotics Platform</span>
+    <span>Built with Sphinx {{ sphinx_version }}</span>
+  </div>
+</footer>
+{%- endblock %}
+
+{%- block scripts %}
+{{ super() }}
+<script>
+function coraToggleSection(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var raw = document.getElementById('cora-toctree-raw');
+  if (!raw) return;
+
+  var captions = Array.from(raw.querySelectorAll('p.caption'));
+  var uls      = Array.from(raw.querySelectorAll(':scope > ul'));
+  var sidebar  = document.getElementById('cora-sidebar');
+
+  captions.forEach(function(cap, i) {
+    var sec = document.createElement('div');
+    var hasActive = uls[i] && uls[i].querySelector('li.current');
+    sec.className = 'cora-nav-section' + (hasActive ? ' open' : '');
+
+    var header = document.createElement('div');
+    header.className = 'cora-nav-section-header';
+    header.setAttribute('onclick', 'coraToggleSection(this)');
+    header.innerHTML =
+      '<span class="cora-nav-section-label">' +
+      cap.querySelector('.caption-text').textContent +
+      '</span><span class="cora-chevron">\u25b6</span>';
+
+    var items = document.createElement('div');
+    items.className = 'cora-nav-items';
+    if (uls[i]) items.appendChild(uls[i]);
+
+    sec.appendChild(header);
+    sec.appendChild(items);
+    sidebar.appendChild(sec);
+
+    if (i < captions.length - 1) {
+      var hr = document.createElement('hr');
+      hr.className = 'cora-nav-divider';
+      sidebar.appendChild(hr);
+    }
+  });
+
+  raw.remove();
+});
+
+(function() {
+  var links = document.querySelectorAll('.cora-toc-panel a');
+  if (!links.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        links.forEach(function(l) { l.classList.remove('active'); });
+        var id = e.target.getAttribute('id');
+        var match = document.querySelector('.cora-toc-panel a[href="#' + id + '"]');
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+  document.querySelectorAll('h2[id], h3[id]').forEach(function(h) { observer.observe(h); });
+})();
+</script>
+{%- endblock %}

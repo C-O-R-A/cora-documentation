@@ -1,0 +1,796 @@
+/* ══════════════════════════════════════════════════════════════════════
+   CORA Sphinx Theme  —  cora.css
+   All tokens extracted exactly from CORA_Docs.html:
+
+   --bg           #0D1117   page background
+   --bg-panel     #161B22   sidebar / topbar / code headers
+   --bg-card      #1C2128   code block header bar, table th
+   --bg-hover     #21262D   hover backgrounds
+   --border       #30363D   all borders
+   --accent       #58A6FF   links, active nav, badges, accent marks
+   --accent-dim   #1F6FEB22 accent tint backgrounds
+   --accent-glow  #58A6FF33 focus glow
+   --success      #3FB950
+   --warning      #D29922
+   --danger       #F85149
+   --text-primary #E6EDF3   headings, strong text
+   --text-body    #C9D1D9   body copy
+   --text-muted   #8B949E   secondary labels, nav items
+   --text-faint   #484F58   placeholders, inactive chrome
+   --mono         JetBrains Mono
+   --sans         Inter
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Reset & base ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #0D1117;
+  --bg-panel:     #161B22;
+  --bg-card:      #1C2128;
+  --bg-hover:     #21262D;
+  --border:       #30363D;
+  --accent:       #58A6FF;
+  --accent-dim:   #1F6FEB22;
+  --accent-glow:  #58A6FF33;
+  --success:      #3FB950;
+  --warning:      #D29922;
+  --danger:       #F85149;
+  --text-primary: #E6EDF3;
+  --text-body:    #C9D1D9;
+  --text-muted:   #8B949E;
+  --text-faint:   #484F58;
+  --mono:         'JetBrains Mono', monospace;
+  --sans:         'Inter', system-ui, sans-serif;
+  --sidebar-w:    300px;
+  --toc-w:        220px;
+  --top-h:        52px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text-body);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── Topbar ───────────────────────────────────────────────────────── */
+.cora-topbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--top-h);
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  z-index: 100;
+}
+.cora-topbar-logo {
+  width: var(--sidebar-w);
+  display: flex; align-items: center;
+  padding: 0 20px;
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.cora-topbar-logo a {
+  display: flex; flex-direction: column;
+  text-decoration: none;
+}
+.cora-logo-mark {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+.cora-logo-sub {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cora-topbar-search {
+  flex: 1;
+  display: flex; align-items: center;
+  padding: 0 24px;
+}
+.cora-search-form { display: flex; width: 280px; }
+.cora-search-input {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-body);
+  font-family: var(--sans);
+  font-size: 13px;
+  padding: 6px 12px 6px 32px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238B949E' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+.cora-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.cora-search-input::placeholder { color: var(--text-faint); }
+.cora-topbar-meta {
+  display: flex; align-items: center; gap: 16px;
+  padding: 0 20px;
+}
+.cora-version-badge {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 2px 8px;
+  letter-spacing: 0.02em;
+}
+.cora-topbar-link {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.cora-topbar-link:hover { color: var(--text-primary); }
+
+/* ── Layout shell ─────────────────────────────────────────────────── */
+.cora-layout {
+  display: flex;
+  padding-top: var(--top-h);
+  min-height: 100vh;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────────────── */
+.cora-sidebar {
+  width: var(--sidebar-w);
+  background: var(--bg-panel);
+  border-right: 1px solid var(--border);
+  position: fixed;
+  top: var(--top-h); bottom: 0;
+  overflow-y: auto;
+  padding: 20px 0 40px;
+  flex-shrink: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.cora-sidebar::-webkit-scrollbar { width: 4px; }
+.cora-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border); border-radius: 2px;
+}
+
+.cora-nav-section { margin-bottom: 4px; }
+.cora-nav-section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 20px;
+  cursor: pointer; user-select: none;
+}
+.cora-nav-section-label {
+  font-family: var(--mono);
+  font-size: 16px; font-weight: 900;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.cora-chevron {
+  color: var(--text-faint); font-size: 10px;
+  transition: transform 0.2s;
+}
+.cora-nav-section.open .cora-chevron { transform: rotate(90deg); }
+.cora-nav-items { display: none; padding-bottom: 4px; }
+.cora-nav-section.open .cora-nav-items { display: block; }
+
+/* Override Sphinx's toctree ul inside nav */
+.cora-nav-items ul {
+  list-style: none; margin: 0; padding: 0;
+}
+.cora-nav-items ul li { margin: 0; }
+
+.cora-nav-item,
+.cora-nav-items ul li a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.12s, background 0.12s, border-color 0.12s;
+}
+.cora-nav-item:hover,
+.cora-nav-items ul li a:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+.cora-nav-item.active,
+.cora-nav-items ul li.current > a {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--accent-dim);
+  font-weight: 500;
+}
+.cora-nav-icon { font-size: 12px; width: 14px; text-align: center; }
+.cora-nav-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 10px 20px;
+}
+
+
+/* ── Sphinx basic theme toctree fallback styling ─────────────────────── */
+/* When toctree_sections is empty, Sphinx renders its own toctree HTML.   */
+/* These rules style the caption labels and nav links to match CORA.      */
+
+.cora-nav-items .caption,
+.cora-nav-items p.caption {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 12px 20px 4px 20px;
+  margin: 0;
+  display: block;
+}
+.cora-nav-items .caption .caption-text,
+.cora-nav-items p.caption .caption-text { color: var(--text-muted); }
+
+/* Top-level toctree ul */
+.cora-nav-items > ul,
+.cora-nav-items .toctree-wrapper > ul {
+  list-style: none; margin: 0; padding: 0;
+}
+
+/* All nav links — top level and nested */
+.cora-nav-items ul li a {
+  display: block;
+  padding: 5px 20px 5px 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.12s, background 0.12s, border-color 0.12s;
+}
+.cora-nav-items ul li a:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+.cora-nav-items ul li.current > a,
+.cora-nav-items ul li a.current {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--accent-dim);
+  font-weight: 500;
+}
+
+/* Nested level — indent one step */
+.cora-nav-items ul li ul li a {
+  padding-left: 32px;
+}
+/* Two levels deep */
+.cora-nav-items ul li ul li ul li a {
+  padding-left: 44px;
+}
+
+/* Section divider between caption groups */
+.cora-nav-items .toctree-wrapper + .toctree-wrapper {
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+  padding-top: 4px;
+}
+
+/* ── Main content ─────────────────────────────────────────────────── */
+.cora-main {
+  margin-left: var(--sidebar-w);
+  margin-right: var(--toc-w);
+  flex: 1; min-width: 0;
+}
+.cora-content {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+
+/* ── TOC panel (right) ────────────────────────────────────────────── */
+.cora-toc-panel {
+  width: var(--toc-w);
+  position: fixed;
+  top: var(--top-h); right: 0; bottom: 0;
+  padding: 28px 20px;
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  background: var(--bg);
+}
+.cora-toc-panel-label {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+}
+
+/* Sphinx toc tree inside TOC panel */
+.cora-toc-panel .contents ul,
+.cora-toc-panel ul { list-style: none; margin: 0; padding: 0; }
+.cora-toc-panel ul li { margin: 0; }
+.cora-toc-panel ul li a {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 3px 0 3px 8px;
+  border-left: 1px solid var(--border);
+  transition: color 0.12s, border-color 0.12s;
+  line-height: 1.5;
+}
+.cora-toc-panel ul li a:hover {
+  color: var(--text-primary);
+  border-left-color: var(--accent);
+}
+.cora-toc-panel ul li a.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 500;
+}
+.cora-toc-panel ul li ul li a {
+  padding-left: 20px;  /* level 2 indent */
+}
+
+/* ── Page eyebrow ─────────────────────────────────────────────────── */
+.cora-page-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+/* ── Typography ───────────────────────────────────────────────────── */
+.cora-content h1 {
+  font-family: var(--mono);
+  font-size: 30px; font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+  border-bottom: none;
+}
+.cora-content h2 {
+  font-family: var(--mono);
+  font-size: 19px; font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 48px; margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: -0.01em;
+}
+.cora-content h3 {
+  font-family: var(--sans);
+  font-size: 15px; font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 28px; margin-bottom: 8px;
+}
+.cora-content h4, .cora-content h5, .cora-content h6 {
+  font-family: var(--sans);
+  color: var(--text-primary);
+}
+.cora-content p { margin-bottom: 14px; color: var(--text-body); }
+.cora-content a { color: var(--accent); text-decoration: none; }
+.cora-content a:hover { text-decoration: underline; }
+
+/* Lead paragraph */
+.cora-content .lead,
+.cora-content section > p:first-of-type {
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.75;
+  margin-bottom: 28px;
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+}
+
+/* ── Code blocks ──────────────────────────────────────────────────── */
+.cora-content code,
+.cora-content tt {
+  font-family: var(--mono);
+  font-size: 13px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: var(--text-primary);
+}
+.cora-content pre {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 20px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-body);
+  margin: 18px 0;
+}
+.cora-content pre code,
+.cora-content pre tt {
+  background: none; border: none; padding: 0;
+  font-size: inherit; color: inherit;
+}
+
+/* Sphinx highlight div wraps pre — give it the header bar treatment */
+.cora-content div.highlight {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 18px 0;
+  overflow: hidden;
+}
+.cora-content div.highlight pre {
+  background: transparent;
+  border: none; border-radius: 0;
+  margin: 0; padding: 18px 20px;
+}
+
+/* Caption above a code block acts as the language header bar */
+.cora-content div.highlight + .caption,
+.cora-content .code-block-caption {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 8px 16px;
+  margin-bottom: 0;
+}
+
+/* highlightlang label shown by Sphinx above fenced blocks */
+.cora-content .highlight-python .highlight::before { content: "python"; }
+.cora-content .highlight-bash   .highlight::before { content: "bash";   }
+.cora-content .highlight-json   .highlight::before { content: "json";   }
+.cora-content .highlight-yaml   .highlight::before { content: "yaml";   }
+.cora-content .highlight-xml    .highlight::before { content: "xml";    }
+.cora-content .highlight-python .highlight::before,
+.cora-content .highlight-bash   .highlight::before,
+.cora-content .highlight-json   .highlight::before,
+.cora-content .highlight-yaml   .highlight::before,
+.cora-content .highlight-xml    .highlight::before {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 16px;
+}
+
+/* ── Syntax highlight — Monokai-style matching the HTML ───────────── */
+/* keywords */
+.cora-content .highlight .k,
+.cora-content .highlight .kw,
+.cora-content .highlight .kr,
+.cora-content .highlight .kn  { color: #FF7B72; }
+/* strings */
+.cora-content .highlight .s,
+.cora-content .highlight .s1,
+.cora-content .highlight .s2,
+.cora-content .highlight .sa,
+.cora-content .highlight .sb  { color: #A5D6FF; }
+/* comments */
+.cora-content .highlight .c,
+.cora-content .highlight .c1,
+.cora-content .highlight .cm  { color: #8B949E; font-style: italic; }
+/* function/class names */
+.cora-content .highlight .nf,
+.cora-content .highlight .nc  { color: #D2A8FF; }
+/* names / variables */
+.cora-content .highlight .n,
+.cora-content .highlight .nn,
+.cora-content .highlight .na,
+.cora-content .highlight .nb  { color: #79C0FF; }
+/* numbers */
+.cora-content .highlight .mi,
+.cora-content .highlight .mf,
+.cora-content .highlight .mh  { color: #FFA657; }
+/* operators */
+.cora-content .highlight .o,
+.cora-content .highlight .ow  { color: #FF7B72; }
+/* punctuation */
+.cora-content .highlight .p   { color: var(--text-body); }
+/* decorators */
+.cora-content .highlight .nd  { color: #FFA657; }
+
+/* ── Tables ───────────────────────────────────────────────────────── */
+.cora-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 13px;
+}
+.cora-content table th {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+}
+.cora-content table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-body);
+  vertical-align: top;
+}
+.cora-content table tr:last-child td { border-bottom: none; }
+.cora-content table tr:hover td { background: var(--bg-hover); }
+.cora-content table td code { font-size: 12px; }
+
+/* ── Admonitions ──────────────────────────────────────────────────── */
+/* Sphinx admonition: .admonition .note .warning .tip .danger etc. */
+.cora-content .admonition {
+  border-radius: 6px;
+  border: 1px solid;
+  padding: 14px 16px;
+  margin: 20px 0;
+  display: flex; gap: 12px;
+}
+.cora-content .admonition .admonition-title {
+  font-weight: 600; font-size: 13px;
+  margin-bottom: 4px;
+  margin-top: 0;
+}
+.cora-content .admonition p { margin: 0; font-size: 13px; }
+.cora-content .admonition p + p { margin-top: 6px; }
+
+.cora-content .note, .cora-content .seealso {
+  background: #1F6FEB11; border-color: #1F6FEB55;
+}
+.cora-content .note .admonition-title,
+.cora-content .seealso .admonition-title { color: var(--accent); }
+
+.cora-content .warning, .cora-content .caution, .cora-content .attention {
+  background: #D2992211; border-color: #D2992255;
+}
+.cora-content .warning .admonition-title,
+.cora-content .caution .admonition-title  { color: var(--warning); }
+
+.cora-content .tip, .cora-content .hint {
+  background: #3FB95011; border-color: #3FB95055;
+}
+.cora-content .tip .admonition-title,
+.cora-content .hint .admonition-title { color: var(--success); }
+
+.cora-content .danger, .cora-content .error {
+  background: #F8514911; border-color: #F8514955;
+}
+.cora-content .danger .admonition-title,
+.cora-content .error .admonition-title { color: var(--danger); }
+
+/* ── Lists ────────────────────────────────────────────────────────── */
+.cora-content ul, .cora-content ol {
+  padding-left: 1.4em;
+  margin-bottom: 14px;
+  color: var(--text-body);
+}
+.cora-content li { margin-bottom: 4px; }
+
+/* ── Sphinx autodoc — Python API output ───────────────────────────── */
+/* Module/class/function signature */
+.cora-content dl.py { margin: 24px 0; }
+.cora-content dl.py > dt {
+  font-family: var(--mono);
+  font-size: 13px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 16px;
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+.cora-content dl.py > dt .sig-name { color: #D2A8FF; font-weight: 700; }
+.cora-content dl.py > dt .sig-param .n { color: #79C0FF; }
+.cora-content dl.py > dt .sig-param .p { color: var(--text-body); }
+.cora-content dl.py > dt .sig-param .default_value { color: #FFA657; }
+.cora-content dl.py > dt em.property {
+  color: var(--accent);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 8px;
+}
+.cora-content dl.py > dd {
+  margin-left: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  background: var(--bg);
+}
+.cora-content dl.py > dd p { margin-bottom: 10px; }
+
+/* Field lists (Parameters, Returns, Raises) */
+.cora-content dl.py > dd dl.field-list { margin: 12px 0; }
+.cora-content dl.py > dd dl.field-list > dt {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: none; border-radius: 0;
+  padding: 4px 8px;
+  margin-bottom: 6px;
+}
+.cora-content dl.py > dd dl.field-list > dd {
+  margin-left: 0;
+  padding: 0 8px 8px;
+  border: none;
+  background: transparent;
+}
+.cora-content dl.py > dd dl.field-list > dd ul {
+  padding-left: 1em;
+}
+
+/* Nested classes / methods inside a class description */
+.cora-content dl.py dd dl.py > dt {
+  border-left-color: var(--text-muted);
+  background: var(--bg-card);
+}
+
+/* ── ROS 2 / rosdoc2 specific overrides ───────────────────────────── */
+/* rosdoc2 wraps its output in .ros-doc; ensure it inherits our vars */
+.cora-content .ros-doc { color: var(--text-body); }
+.cora-content .ros-doc h2 { font-family: var(--mono); }
+
+/* ROS message field tables */
+.cora-content .msg-field-table th { background: var(--bg-card); }
+
+/* ── Cards (used in hand-authored .md pages via raw HTML) ─────────── */
+.cora-content .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px; margin: 20px 0;
+}
+.cora-content .card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  text-decoration: none;
+  display: block;
+}
+.cora-content .card:hover {
+  border-color: var(--accent);
+  background: var(--bg-card);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+.cora-content .card-icon { font-size: 22px; margin-bottom: 10px; }
+.cora-content .card-title {
+  font-family: var(--mono);
+  font-size: 13px; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 5px;
+}
+.cora-content .card-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Inline badges ────────────────────────────────────────────────── */
+.cora-content .badge,
+.badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  padding: 2px 6px; border-radius: 3px;
+  margin-right: 4px;
+}
+.badge-ros { background: #22C55E22; color: #22C55E; border: 1px solid #22C55E44; }
+.badge-py  { background: #3B82F622; color: #60A5FA; border: 1px solid #3B82F644; }
+.badge-cad { background: #F59E0B22; color: #FCD34D; border: 1px solid #F59E0B44; }
+.tag-required { background: #F8514922; color: #F85149; border: 1px solid #F8514944;
+  display: inline-block; font-family: var(--mono);
+  font-size: 11px; font-weight: 600; border-radius: 3px;
+  padding: 1px 6px; margin-left: 6px; }
+.tag-optional { background: #D2992222; color: #D29922; border: 1px solid #D2992244;
+  display: inline-block; font-family: var(--mono);
+  font-size: 11px; font-weight: 600; border-radius: 3px;
+  padding: 1px 6px; margin-left: 6px; }
+
+/* ── Joint cards ──────────────────────────────────────────────────── */
+.joint-card {
+  background: var(--bg-panel); border: 1px solid var(--border);
+  border-radius: 8px; margin: 16px 0; overflow: hidden;
+}
+.joint-card-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+.joint-label {
+  font-family: var(--mono); font-size: 14px; font-weight: 700;
+  color: var(--text-primary); flex: 1;
+}
+.joint-type-badge {
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  padding: 2px 8px; border-radius: 4px;
+  background: var(--accent-dim); color: var(--accent);
+  border: 1px solid var(--accent);
+}
+.joint-type-badge.planned {
+  background: #D2992222; color: var(--warning);
+  border-color: var(--warning);
+}
+.joint-body { padding: 18px 20px; }
+
+/* ── Steps ────────────────────────────────────────────────────────── */
+.step {
+  display: flex; gap: 16px;
+  margin-bottom: 24px; align-items: flex-start;
+}
+.step-num {
+  width: 28px; height: 28px;
+  background: var(--accent-dim); border: 1px solid var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 12px; font-weight: 700;
+  color: var(--accent); flex-shrink: 0; margin-top: 2px;
+}
+.step-content { flex: 1; }
+.step-title { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; font-size: 14px; }
+.step-desc { font-size: 13px; color: var(--text-muted); }
+
+/* ── Sphinx search page ───────────────────────────────────────────── */
+#search-results .search li {
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+#search-results .search li a { color: var(--accent); font-weight: 500; }
+#search-results .context { color: var(--text-muted); font-size: 13px; }
+#searchbox input[type="text"] { @extend .cora-search-input; }
+
+/* ── Footer ───────────────────────────────────────────────────────── */
+.cora-footer {
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border);
+  padding: 16px 40px;
+  margin-left: var(--sidebar-w);
+  margin-right: var(--toc-w);
+}
+.cora-footer-inner {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--text-muted);
+  max-width: 820px; margin: 0 auto;
+}
+
+/* ── Scrollbars ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── Sphinx utility classes we don't want ─────────────────────────── */
+div.body { background: transparent; max-width: none; padding: 0; }
+div.documentwrapper { float: none; width: auto; }
+div.bodywrapper { margin: 0; }
+div.sphinxsidebar { display: none; } /* we use our own sidebar */
+div.related { display: none; }       /* breadcrumb bar — hidden */
+div.sphinxsidebarwrapper { display: none; }
