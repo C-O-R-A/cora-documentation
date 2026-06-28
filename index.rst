@@ -1,12 +1,13 @@
 CORA Documentation
 ==================
+.. include:: pages/General/introduction.md
+   :parser: myst_parser.sphinx_
 
 .. toctree::
    :hidden:
    :maxdepth: 1
    :caption: Get Started
 
-   pages/General/introduction
    pages/General/installation
    pages/General/quickstart
    pages/General/joints

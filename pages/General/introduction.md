@@ -44,10 +44,3 @@ physical arm:
 | **Drop-in extensibility** | Adding a new joint type requires only a folder: manifest, mesh files, and a CadQuery script. No platform code changes. |
 | **Zero manual integration** | Every exported software package is generated directly from the hardware configuration. The URDF, SRDF, and control YAML always match the physical arm. |
 | **REP-103 everywhere** | Z-up, metres, radians throughout — no unit conversions anywhere in the stack. |
-
-## Quick links
-
-New here? Start with the [Quickstart](quickstart.md) or jump to the
-[3-DOF example config](example-3dof.md). Building hardware? Go to the
-[Build Guide](build-overview.md). Looking for the SDK? See the
-[Python SDK](sdk.md) page.
