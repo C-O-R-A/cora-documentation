@@ -25,7 +25,6 @@ jobs:
 
       - name: Build docs
         run: |
-          cd cora_docs
           make _sphinx
 
       - name: Upload Pages artifact
