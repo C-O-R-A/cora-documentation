@@ -22,16 +22,16 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install sphinx myst-parser sphinx-autodoc-typehints
+          pip install -e codi/
 
       - name: Build docs
         run: |
-          cd cora_docs
           make _sphinx
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: cora_docs/_build/html
+          path: _build/html
 
       - name: Deploy to GitHub Pages
         id: deployment
