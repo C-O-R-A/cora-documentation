@@ -22,6 +22,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install sphinx myst-parser sphinx-autodoc-typehints
+          pip install -e codi/
 
       - name: Build docs
         run: |
