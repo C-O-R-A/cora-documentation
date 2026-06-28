@@ -687,7 +687,11 @@ body {
   transform: translateY(-1px);
   text-decoration: none;
 }
-.cora-content .card-icon { font-size: 22px; margin-bottom: 10px; }
+.cora-content .card-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
 .cora-content .card-title {
   font-family: var(--mono);
   font-size: 13px; font-weight: 600;
