@@ -22,7 +22,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install --break-system-packages sphinx myst-parser sphinx-autodoc-typehints
-          pip install --break-system-packages -e codi/
+          pip install --break-system-packages git+https://github.com/C-O-R-A/CoDI.git@main
 
       - name: Build docs
         run: |
