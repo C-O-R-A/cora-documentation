@@ -1,0 +1,20 @@
+cora\_moveit package
+====================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   cora_moveit.moveit_servo_test
+   cora_moveit.mover_node
+   cora_moveit.mover_node_test
+
+Module contents
+---------------
+
+.. automodule:: cora_moveit
+   :members:
+   :undoc-members:
+   :show-inheritance:

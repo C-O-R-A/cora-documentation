@@ -1,9 +1,12 @@
-# Sphinx build output
-_build/
-docs_build/
+# Sphinx build output — exclude everything except ros2 API output
+_build/*
+!_build/html/
+_build/html/*
+!_build/html/api/
+_build/html/api/*
 !_build/html/api/ros2/
+docs_build/
 cross_reference/
-
 
 # Python
 __pycache__/

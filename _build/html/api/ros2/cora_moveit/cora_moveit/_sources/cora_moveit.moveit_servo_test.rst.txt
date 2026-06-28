@@ -1,0 +1,7 @@
+cora\_moveit.moveit\_servo\_test module
+=======================================
+
+.. automodule:: cora_moveit.moveit_servo_test
+   :members:
+   :undoc-members:
+   :show-inheritance:

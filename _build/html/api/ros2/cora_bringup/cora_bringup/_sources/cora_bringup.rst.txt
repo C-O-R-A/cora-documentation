@@ -1,0 +1,10 @@
+cora\_bringup package
+=====================
+
+Module contents
+---------------
+
+.. automodule:: cora_bringup
+   :members:
+   :undoc-members:
+   :show-inheritance:

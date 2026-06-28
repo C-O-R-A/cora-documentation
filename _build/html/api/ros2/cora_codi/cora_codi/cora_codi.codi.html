@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cora_codi.codi module &mdash; cora_codi 0.0.0 documentation</title>
+      
+      
+
+  
+  
+        <script src="_static/jquery.js?v=8dae8fb0"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=7026087e"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Standard Documents" href="standards.html" />
+    <link rel="prev" title="cora_codi package" href="cora_codi.html" /> 
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="../../../../_static/cora.css">
+</head>
+
+
+<body>
+
+<header class="cora-topbar">
+  <div class="cora-topbar-logo">
+    <a href="../../../../index.html">
+      <div class="cora-logo-mark">CORA</div>
+      <div class="cora-logo-sub">Docs</div>
+    </a>
+  </div>
+  <div class="cora-topbar-search">
+    <form class="cora-search-form" action="../../../../../../search.html" method="get">
+      <input class="cora-search-input" type="text" name="q"
+             placeholder="Search documentation…" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+  </div>
+  <div class="cora-topbar-meta">
+    <span class="cora-version-badge">v0.1</span>
+    <a class="cora-topbar-link"
+       href="https://github.com/your-org/cora">GitHub</a>
+    <a class="cora-topbar-link"
+       href="../../../../../../pages/changelog.html">Changelog</a>
+  </div>
+</header>
+
+<div class="cora-layout">
+
+  <nav class="cora-sidebar" id="cora-sidebar">
+    <div class="cora-nav-section open">
+      <div class="cora-nav-section-header" onclick="coraToggleSection(this)">
+        <span class="cora-nav-section-label">Contents</span>
+        <span class="cora-chevron">▶</span>
+      </div>
+      <div class="cora-nav-items">
+        <a class="cora-nav-item" href="modules.html"><span class="cora-nav-icon"></span> Python API</a>
+        <a class="cora-nav-item" href="standards.html"><span class="cora-nav-icon"></span> Standard Documents</a>
+        <a class="cora-nav-item" href="genindex.html"><span class="cora-nav-icon"></span> Index</a>
+      </div>
+    </div>
+    <hr class="cora-nav-divider">
+  </nav>
+
+  <main class="cora-main">
+    <div class="cora-content">
+<div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">cora_codi</a></li>
+          <li class="breadcrumb-item"><a href="cora_codi.html">cora_codi package</a></li>
+      <li class="breadcrumb-item active">cora_codi.codi module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cora_codi.codi.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-cora_codi.codi">
+<span id="cora-codi-codi-module"></span><h1>cora_codi.codi module<a class="headerlink" href="#module-cora_codi.codi" title="Link to this heading"></a></h1>
+<section id="codi-node">
+<h2>codi_node<a class="headerlink" href="#codi-node" title="Link to this heading"></a></h2>
+<p>ROS 2 bridge node that connects the codi Python SDK to the CORA hardware
+stack. Receives motion commands from a connected codi client over ZMQ,
+translates them into ROS 2 action goals or MoveIt Servo messages, and
+publishes robot state (transforms) back to the client.</p>
+<p>Two motion pipelines are supported:</p>
+<ul class="simple">
+<li><p><strong>MoveIt Servo</strong> (real-time): commands are published directly as
+<code class="docutils literal notranslate"><span class="pre">TwistStamped</span></code>, <code class="docutils literal notranslate"><span class="pre">JointJog</span></code>, or <code class="docutils literal notranslate"><span class="pre">PoseStamped</span></code> topics at 100 Hz.</p></li>
+<li><p><strong>MoveIt action</strong> (planned): commands are sent as <code class="docutils literal notranslate"><span class="pre">PoseGoal</span></code> action
+goals to the <code class="docutils literal notranslate"><span class="pre">posegoal</span></code> action server and executed via MoveIt 2.</p></li>
+</ul>
+<p>Node name: <code class="docutils literal notranslate"><span class="pre">codi_node</span></code></p>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cora_codi.codi.</span></span><span class="sig-name descname"><span class="pre">CodiNode</span></span><a class="headerlink" href="#cora_codi.codi.CodiNode" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+<p>ROS 2 node that bridges the codi SDK to the CORA hardware stack.</p>
+<p>Starts a <code class="xref py py-class docutils literal notranslate"><span class="pre">CoraServer</span></code> instance, polls it for incoming
+commands, and dispatches them to either the MoveIt Servo pipeline
+(real-time) or the MoveIt action pipeline (planned motion).</p>
+<p>Concurrently, TF2 transforms for the end-effector, camera, and gripper
+frames are looked up at 100 Hz and forwarded back to connected codi
+clients via <code class="xref py py-meth docutils literal notranslate"><span class="pre">send_state()</span></code>.</p>
+<dl class="simple">
+<dt>Publishers:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/servo_node/delta_twist_cmds</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TwistStamped</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/servo_node/delta_joint_cmds</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">JointJog</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/servo_node/delta_pose_cmds</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PoseStamped</span></code>)</p></li>
+</ul>
+</dd>
+<dt>Action clients:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">posegoal</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PoseGoal</span></code>)</p></li>
+</ul>
+</dd>
+<dt>Service clients:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">servo_node/switch_command_type</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ServoCommandType</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/vision_node/change_state</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeState</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/camera_node/change_state</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeState</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/controller_node/change_state</span></code> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeState</span></code>)</p></li>
+</ul>
+</dd>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>config_file (str): Path to the codi server YAML config file.</dt><dd><p>Defaults to <code class="docutils literal notranslate"><span class="pre">&lt;package_root&gt;/config/server_params.yaml</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.activate_node">
+<span class="sig-name descname"><span class="pre">activate_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.activate_node" title="Link to this definition"></a></dt>
+<dd><p>Send an <code class="docutils literal notranslate"><span class="pre">ACTIVATE</span></code> lifecycle transition to a managed node.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>client: The <code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeState</span></code> service</dt><dd><p>client for the target node.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.apply_config">
+<span class="sig-name descname"><span class="pre">apply_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.apply_config" title="Link to this definition"></a></dt>
+<dd><p>Apply the current <code class="docutils literal notranslate"><span class="pre">self.config</span></code> state by activating or
+deactivating the vision, camera, and controller lifecycle nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.config_callback">
+<span class="sig-name descname"><span class="pre">config_callback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.config_callback" title="Link to this definition"></a></dt>
+<dd><p>Timer callback (2 Hz) that polls the codi server for config
+changes and activates or deactivates lifecycle nodes accordingly.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.construct_pose_msg">
+<span class="sig-name descname"><span class="pre">construct_pose_msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pose_command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PoseStamped</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.construct_pose_msg" title="Link to this definition"></a></dt>
+<dd><p>Populate a <code class="xref py py-class docutils literal notranslate"><span class="pre">PoseStamped</span></code> from a position command.</p>
+<p>Switches the Servo input mode to <code class="docutils literal notranslate"><span class="pre">POSE</span></code> if not already active
+and writes the pose values into <code class="docutils literal notranslate"><span class="pre">msg</span></code>.</p>
+<dl>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>pose_command: Shape <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">4)</span></code> array. Row 0 is</dt><dd><p><code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">1.0]</span></code>; row 1 is <code class="docutils literal notranslate"><span class="pre">[qx,</span> <span class="pre">qy,</span> <span class="pre">qz,</span> <span class="pre">qw]</span></code>.</p>
+</dd>
+</dl>
+<p>msg: The <code class="xref py py-class docutils literal notranslate"><span class="pre">PoseStamped</span></code> message to populate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.construct_twist_from_accel">
+<span class="sig-name descname"><span class="pre">construct_twist_from_accel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pose_command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TwistStamped</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.construct_twist_from_accel" title="Link to this definition"></a></dt>
+<dd><p>Integrate an acceleration command into a <code class="xref py py-class docutils literal notranslate"><span class="pre">TwistStamped</span></code> message.</p>
+<p>Accumulates linear and angular velocities by integrating the
+acceleration values over <code class="docutils literal notranslate"><span class="pre">self.timer_period</span></code> and writes the
+result into <code class="docutils literal notranslate"><span class="pre">msg</span></code>. Switches the Servo input mode to <code class="docutils literal notranslate"><span class="pre">TWIST</span></code>
+if not already active.</p>
+<dl>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>pose_command: Shape <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">3)</span></code> array. Row 0 is linear</dt><dd><p>acceleration <code class="docutils literal notranslate"><span class="pre">[ax,</span> <span class="pre">ay,</span> <span class="pre">az]</span></code>; row 1 is angular
+acceleration <code class="docutils literal notranslate"><span class="pre">[αx,</span> <span class="pre">αy,</span> <span class="pre">αz]</span></code>.</p>
+</dd>
+</dl>
+<p>msg: The <code class="xref py py-class docutils literal notranslate"><span class="pre">TwistStamped</span></code> message to populate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.construct_twist_msg">
+<span class="sig-name descname"><span class="pre">construct_twist_msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pose_command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TwistStamped</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.construct_twist_msg" title="Link to this definition"></a></dt>
+<dd><p>Populate a <code class="xref py py-class docutils literal notranslate"><span class="pre">TwistStamped</span></code> from a velocity command.</p>
+<p>Switches the Servo input mode to <code class="docutils literal notranslate"><span class="pre">TWIST</span></code> if not already active
+and writes the velocity values directly into <code class="docutils literal notranslate"><span class="pre">msg</span></code>.</p>
+<dl>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>pose_command: Shape <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">3)</span></code> array. Row 0 is linear velocity</dt><dd><p><code class="docutils literal notranslate"><span class="pre">[vx,</span> <span class="pre">vy,</span> <span class="pre">vz]</span></code>; row 1 is angular velocity
+<code class="docutils literal notranslate"><span class="pre">[ωx,</span> <span class="pre">ωy,</span> <span class="pre">ωz]</span></code>.</p>
+</dd>
+</dl>
+<p>msg: The <code class="xref py py-class docutils literal notranslate"><span class="pre">TwistStamped</span></code> message to populate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.deactivate_node">
+<span class="sig-name descname"><span class="pre">deactivate_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.deactivate_node" title="Link to this definition"></a></dt>
+<dd><p>Send a <code class="docutils literal notranslate"><span class="pre">DEACTIVATE</span></code> lifecycle transition to a managed node.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>client: The <code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeState</span></code> service</dt><dd><p>client for the target node.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.pose_feedback_callback">
+<span class="sig-name descname"><span class="pre">pose_feedback_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback_msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.pose_feedback_callback" title="Link to this definition"></a></dt>
+<dd><p>Action feedback callback — sets status to <code class="docutils literal notranslate"><span class="pre">&quot;done&quot;</span></code> on receipt.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>feedback_msg: The feedback message from the <code class="docutils literal notranslate"><span class="pre">posegoal</span></code> action</dt><dd><p>server (currently unused beyond updating status).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.pose_response_callback">
+<span class="sig-name descname"><span class="pre">pose_response_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">future</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.pose_response_callback" title="Link to this definition"></a></dt>
+<dd><p>Action goal response callback.</p>
+<p>Logs whether the goal was accepted and, if so, registers
+<a class="reference internal" href="#cora_codi.codi.CodiNode.pose_result_callback" title="cora_codi.codi.CodiNode.pose_result_callback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pose_result_callback()</span></code></a> on the result future.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>future: The future returned by</dt><dd><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_goal_async()</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.pose_result_callback">
+<span class="sig-name descname"><span class="pre">pose_result_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">future</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.pose_result_callback" title="Link to this definition"></a></dt>
+<dd><p>Action result callback.</p>
+<p>Updates <code class="docutils literal notranslate"><span class="pre">self.status</span></code> from the action result and logs success
+or failure.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>future: The future returned by</dt><dd><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_result_async()</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.pose_timer_callback">
+<span class="sig-name descname"><span class="pre">pose_timer_callback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.pose_timer_callback" title="Link to this definition"></a></dt>
+<dd><p>Timer callback (100 Hz) that polls the codi server for new
+commands and dispatches them to the appropriate motion pipeline.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">rt</span></code> flag is set in the command, the Servo pipeline is
+used and messages are published directly. Otherwise the command is
+sent as a <code class="docutils literal notranslate"><span class="pre">PoseGoal</span></code> action goal to the MoveIt action server.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.switch_command_type">
+<span class="sig-name descname"><span class="pre">switch_command_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.switch_command_type" title="Link to this definition"></a></dt>
+<dd><p>Switch the MoveIt Servo input command type.</p>
+<p>Calls the <code class="docutils literal notranslate"><span class="pre">servo_node/switch_command_type</span></code> service to change
+between <code class="docutils literal notranslate"><span class="pre">JOINT_JOG</span></code>, <code class="docutils literal notranslate"><span class="pre">TWIST</span></code>, and <code class="docutils literal notranslate"><span class="pre">POSE</span></code> modes.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cmd_type: One of <code class="docutils literal notranslate"><span class="pre">&quot;JOINT_JOG&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;TWIST&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;POSE&quot;</span></code>.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If <code class="docutils literal notranslate"><span class="pre">cmd_type</span></code> is not one of the accepted values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.transform_to_array">
+<span class="sig-name descname"><span class="pre">transform_to_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TransformStamped</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#cora_codi.codi.CodiNode.transform_to_array" title="Link to this definition"></a></dt>
+<dd><p>Convert a <code class="xref py py-class docutils literal notranslate"><span class="pre">TransformStamped</span></code> to a <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">4)</span></code> NumPy array.</p>
+<p>Row 0 contains <code class="docutils literal notranslate"><span class="pre">[tx,</span> <span class="pre">ty,</span> <span class="pre">tz,</span> <span class="pre">1.0]</span></code> (translation + homogeneous
+coordinate). Row 1 contains <code class="docutils literal notranslate"><span class="pre">[qx,</span> <span class="pre">qy,</span> <span class="pre">qz,</span> <span class="pre">qw]</span></code> (quaternion).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>tf: The transform to convert.</p>
+</dd>
+<dt>Returns:</dt><dd><p>numpy.ndarray: Shape <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">4)</span></code>, dtype <code class="docutils literal notranslate"><span class="pre">float64</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_codi.codi.CodiNode.transforms_callback">
+<span class="sig-name descname"><span class="pre">transforms_callback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.CodiNode.transforms_callback" title="Link to this definition"></a></dt>
+<dd><p>Timer callback (100 Hz) that looks up TF2 transforms for all
+reference frames and forwards the robot state to the codi server.</p>
+<p>Looks up <code class="docutils literal notranslate"><span class="pre">base_link</span></code> → <code class="docutils literal notranslate"><span class="pre">Gripper</span></code>, <code class="docutils literal notranslate"><span class="pre">Camera</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">endeffector</span></code> transforms. On failure the transform is set to a
+zero array and a throttled warning is logged.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cora_codi.codi.main">
+<span class="sig-prename descclassname"><span class="pre">cora_codi.codi.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_codi.codi.main" title="Link to this definition"></a></dt>
+<dd><p>Entry point for the <code class="docutils literal notranslate"><span class="pre">codi_node</span></code> executable.</p>
+<p>Initialises rclpy, spins the <a class="reference internal" href="#cora_codi.codi.CodiNode" title="cora_codi.codi.CodiNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">CodiNode</span></code></a>, then shuts down
+cleanly on exit.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>args: Optional command-line arguments passed to</dt><dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">rclpy.init()</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+    </div>
+  </main>
+
+  <aside class="cora-toc-panel" id="cora-toc-panel">
+    <div class="cora-toc-panel-label">On this page</div>
+
+  </aside>
+
+</div>
+
+
+<script>
+(function() {
+  // Highlight active TOC link on scroll
+  var links = document.querySelectorAll('.cora-toc-panel a');
+  if (!links.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        links.forEach(function(l) { l.classList.remove('active'); });
+        var id = e.target.getAttribute('id');
+        var m = document.querySelector('.cora-toc-panel a[href="#' + id + '"]');
+        if (m) m.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+  document.querySelectorAll('h2[id], h3[id]').forEach(function(h) {
+    observer.observe(h);
+  });
+})();
+</script>
+
+</body>
+</html>

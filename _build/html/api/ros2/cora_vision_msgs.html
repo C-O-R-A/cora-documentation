@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>cora_vision_msgs — CORA Docs</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b20cc3f5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cora.css?v=8e3b7dbf" />
+
+    <script src="../../_static/documentation_options.js?v=65b158aa"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script>
+function coraToggleSection(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var raw = document.getElementById('cora-toctree-raw');
+  if (!raw) return;
+
+  var captions = Array.from(raw.querySelectorAll('p.caption'));
+  var uls      = Array.from(raw.querySelectorAll(':scope > ul'));
+  var sidebar  = document.getElementById('cora-sidebar');
+
+  captions.forEach(function(cap, i) {
+    var sec = document.createElement('div');
+    var hasActive = uls[i] && uls[i].querySelector('li.current');
+    sec.className = 'cora-nav-section' + (hasActive ? ' open' : '');
+
+    var header = document.createElement('div');
+    header.className = 'cora-nav-section-header';
+    header.setAttribute('onclick', 'coraToggleSection(this)');
+    header.innerHTML =
+      '<span class="cora-nav-section-label">' +
+      cap.querySelector('.caption-text').textContent +
+      '</span><span class="cora-chevron">\u25b6</span>';
+
+    var items = document.createElement('div');
+    items.className = 'cora-nav-items';
+    if (uls[i]) items.appendChild(uls[i]);
+
+    sec.appendChild(header);
+    sec.appendChild(items);
+    sidebar.appendChild(sec);
+
+    if (i < captions.length - 1) {
+      var hr = document.createElement('hr');
+      hr.className = 'cora-nav-divider';
+      sidebar.appendChild(hr);
+    }
+  });
+
+  raw.remove();
+});
+
+(function() {
+  var links = document.querySelectorAll('.cora-toc-panel a');
+  if (!links.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        links.forEach(function(l) { l.classList.remove('active'); });
+        var id = e.target.getAttribute('id');
+        var match = document.querySelector('.cora-toc-panel a[href="#' + id + '"]');
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+  document.querySelectorAll('h2[id], h3[id]').forEach(function(h) { observer.observe(h); });
+})();
+</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="cora_gazebo" href="cora_gazebo.html" />
+    <link rel="prev" title="cora_vision" href="cora_vision.html" />
+<meta name="theme-color" content="#161B22">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+  </head><body>
+<header class="cora-topbar">
+  <div class="cora-topbar-logo">
+    <a href="../../index.html">
+      <div class="cora-logo-mark">CORA</div>
+      <div class="cora-logo-sub">Docs</div>
+    </a>
+  </div>
+  <div class="cora-topbar-search">
+    <form class="cora-search-form" action="../../search.html" method="get">
+      <input class="cora-search-input" type="text" name="q" placeholder="Search documentation…" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+  </div>
+  <div class="cora-topbar-meta">
+    <span class="cora-version-badge">v0.1-alpha</span>
+    <a class="cora-topbar-link" href="https://github.com/your-org/cora">GitHub</a>
+    <a class="cora-topbar-link" href="../../pages/changelog.html">Changelog</a>
+  </div>
+</header>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cora_gazebo.html" title="cora_gazebo"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cora_vision.html" title="cora_vision"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CORA Docs</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">ROS 2 Package Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">cora_vision_msgs</a></li> 
+      </ul>
+    </div>
+<div class="cora-layout">
+
+  <nav class="cora-sidebar" id="cora-sidebar">
+    <div id="cora-toctree-raw" style="display:none">
+      <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/General/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/General/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/General/joints.html">CORA Joints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/General/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/General/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configurator</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/Configurator/configurator.html">Configurator Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/Configurator/schema.html">Joint Manifest Schema</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Build Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/Build/bom.html">BOM &amp; Sourcing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/Build/build.html">Mechanical Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/Build/electrical.html">Electrical &amp; Connectors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/Api/ros2-setup.html">ROS 2 Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/Api/simulation.html">Gazebo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/Api/sdk.html">Python SDK (codi)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python SDK — codi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ROS 2 Package Reference</a></li>
+</ul>
+
+    </div>
+  </nav>
+
+  <main class="cora-main">
+    <div class="cora-content">
+      <div class="cora-page-eyebrow">ROS 2 Package Reference
+      </div>
+  <section id="cora-vision-msgs">
+<h1>cora_vision_msgs<a class="headerlink" href="#cora-vision-msgs" title="Link to this heading">¶</a></h1>
+<meta http-equiv="refresh" content="0; url=cora_vision_msgs/cora_vision_msgs/index.html">
+<script>window.location.replace("cora_vision_msgs/cora_vision_msgs/index.html");</script>
+<p>Redirecting to <a href="cora_vision_msgs/cora_vision_msgs/index.html">cora_vision_msgs documentation</a>…</p></section>
+
+
+    </div>
+  </main>
+
+  <aside class="cora-toc-panel" id="cora-toc-panel">
+    <div class="cora-toc-panel-label">On this page</div>
+  </aside>
+
+</div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="cora_gazebo.html" title="cora_gazebo"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cora_vision.html" title="cora_vision"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CORA Docs</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >ROS 2 Package Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">cora_vision_msgs</a></li> 
+      </ul>
+    </div>
+<footer class="cora-footer">
+  <div class="cora-footer-inner">
+    <span>CORA Robotics Platform</span>
+    <span>Built with Sphinx 7.2.6</span>
+  </div>
+</footer>
+  </body>
+</html>
