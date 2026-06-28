@@ -174,7 +174,7 @@ body {
 }
 .cora-nav-section-label {
   font-family: var(--mono);
-  font-size: 16px; font-weight: 900;
+  font-size: 13px; font-weight: 900;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -791,6 +791,10 @@ body {
 div.body { background: transparent; max-width: none; padding: 0; }
 div.documentwrapper { float: none; width: auto; }
 div.bodywrapper { margin: 0; }
-div.sphinxsidebar { display: none; } /* we use our own sidebar */
-div.related { display: none; }       /* breadcrumb bar — hidden */
+div.sphinxsidebar { display: none; }
+div.related { display: none; }
 div.sphinxsidebarwrapper { display: none; }
+div.related,
+nav.related,
+.wy-breadcrumbs,
+ul.wy-breadcrumbs { display: none !important; }

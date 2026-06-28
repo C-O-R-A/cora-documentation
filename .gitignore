@@ -1,6 +1,7 @@
 # Sphinx build output
 _build/
 docs_build/
+!_build/html/api/ros2/
 cross_reference/
 
 # Python

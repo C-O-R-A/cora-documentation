@@ -69,11 +69,12 @@ master_doc = "index"
 language   = "en"
 exclude_patterns = [
     "_build",
+    "docs_build",
+    "api/ros2/docs_build",
     "Thumbs.db",
     ".DS_Store",
     "_theme",
     "**.ipynb_checkpoints",
-    "docs_build",
     "cross_reference",
 ]
 
