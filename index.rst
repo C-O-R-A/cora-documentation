@@ -1,4 +1,4 @@
-CORA Documentation
+CORA
 ==================
 .. include:: pages/General/introduction.md
    :parser: myst_parser.sphinx_

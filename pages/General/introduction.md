@@ -1,4 +1,4 @@
-# CORA Documentation
+# Primary documentation and instructions
 
 CORA (Collaborative Open Robotic Arms) is a modular cobot platform. Design your arm in the
 configurator, generate matching CAD and ROS 2 software automatically, build it, and run it.
