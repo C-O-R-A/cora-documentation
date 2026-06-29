@@ -1,7 +1,0 @@
-cora\_vision.aruco module
-=========================
-
-.. automodule:: cora_vision.aruco
-   :members:
-   :undoc-members:
-   :show-inheritance:

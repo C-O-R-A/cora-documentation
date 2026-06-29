@@ -1,8 +1,0 @@
-PoseGoal
-========
-This is a ROS action definition.
-
-**Source**
-
-.. literalinclude:: ../../../../../../../cora_common/src/cora_msgs/action/PoseGoal.action
-

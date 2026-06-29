@@ -1,7 +1,0 @@
-cora\_codi.codi module
-======================
-
-.. automodule:: cora_codi.codi
-   :members:
-   :undoc-members:
-   :show-inheritance:
