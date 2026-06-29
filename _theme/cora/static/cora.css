@@ -724,6 +724,7 @@ body {
 .joint-card {
   background: var(--bg-panel); border: 1px solid var(--border);
   border-radius: 8px; margin: 16px 0; overflow: hidden;
+  max-width: 280px;
 }
 .joint-card-header {
   display: flex; align-items: center; gap: 16px;
@@ -744,8 +745,19 @@ body {
   background: #D2992222; color: var(--warning);
   border-color: var(--warning);
 }
-.joint-body { padding: 18px 20px; }
-
+.joint-body {
+  padding: 18px 20px;
+  text-align: center;
+}
+.joint-body img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  margin-bottom: 0;
+  display: block;
+}
 /* ── Steps ────────────────────────────────────────────────────────── */
 .step {
   display: flex; gap: 16px;
