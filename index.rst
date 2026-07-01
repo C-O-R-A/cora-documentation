@@ -10,9 +10,15 @@ CORA
 
    pages/General/installation
    pages/General/quickstart
-   pages/General/joints
-   pages/General/architecture
    pages/General/troubleshooting
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: System Overview
+
+   pages/General/architecture
+   pages/General/joints
 
 .. toctree::
    :hidden:

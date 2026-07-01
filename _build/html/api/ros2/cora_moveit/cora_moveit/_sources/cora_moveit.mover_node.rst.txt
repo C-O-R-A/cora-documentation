@@ -1,0 +1,7 @@
+cora\_moveit.mover\_node module
+===============================
+
+.. automodule:: cora_moveit.mover_node
+   :members:
+   :undoc-members:
+   :show-inheritance:

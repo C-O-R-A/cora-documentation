@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cora_vision.aruco module &mdash; cora_vision 0.0.0 documentation</title>
+      
+      
+
+  
+  
+        <script src="_static/jquery.js?v=8dae8fb0"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=7026087e"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="cora_vision.vision_node module" href="cora_vision.vision_node.html" />
+    <link rel="prev" title="cora_vision package" href="cora_vision.html" /> 
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="../../../../_static/cora.css">
+</head>
+
+
+<body>
+
+<header class="cora-topbar">
+  <div class="cora-topbar-logo">
+    <a href="../../../../index.html">
+      <div class="cora-logo-mark">CORA</div>
+      <div class="cora-logo-sub">Docs</div>
+    </a>
+  </div>
+  <div class="cora-topbar-search">
+    <form class="cora-search-form" action="../../../../../../search.html" method="get">
+      <input class="cora-search-input" type="text" name="q"
+             placeholder="Search documentation…" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+  </div>
+  <div class="cora-topbar-meta">
+    <span class="cora-version-badge">v0.1</span>
+    <a class="cora-topbar-link"
+       href="https://github.com/your-org/cora">GitHub</a>
+    <a class="cora-topbar-link"
+       href="../../../../../../pages/changelog.html">Changelog</a>
+  </div>
+</header>
+
+<div class="cora-layout">
+
+  <nav class="cora-sidebar" id="cora-sidebar">
+    <div class="cora-nav-section open">
+      <div class="cora-nav-section-header" onclick="coraToggleSection(this)">
+        <span class="cora-nav-section-label">Contents</span>
+        <span class="cora-chevron">▶</span>
+      </div>
+      <div class="cora-nav-items">
+        <a class="cora-nav-item" href="modules.html"><span class="cora-nav-icon"></span> Python API</a>
+        <a class="cora-nav-item" href="standards.html"><span class="cora-nav-icon"></span> Standard Documents</a>
+        <a class="cora-nav-item" href="genindex.html"><span class="cora-nav-icon"></span> Index</a>
+      </div>
+    </div>
+    <hr class="cora-nav-divider">
+  </nav>
+
+  <main class="cora-main">
+    <div class="cora-content">
+<div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">cora_vision</a></li>
+          <li class="breadcrumb-item"><a href="cora_vision.html">cora_vision package</a></li>
+      <li class="breadcrumb-item active">cora_vision.aruco module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cora_vision.aruco.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-cora_vision.aruco">
+<span id="cora-vision-aruco-module"></span><h1>cora_vision.aruco module<a class="headerlink" href="#module-cora_vision.aruco" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="cora_vision.aruco.detect_distance">
+<span class="sig-prename descclassname"><span class="pre">cora_vision.aruco.</span></span><span class="sig-name descname"><span class="pre">detect_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_vision.aruco.detect_distance" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+    </div>
+  </main>
+
+  <aside class="cora-toc-panel" id="cora-toc-panel">
+    <div class="cora-toc-panel-label">On this page</div>
+
+  </aside>
+
+</div>
+
+
+<script>
+(function() {
+  // Highlight active TOC link on scroll
+  var links = document.querySelectorAll('.cora-toc-panel a');
+  if (!links.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        links.forEach(function(l) { l.classList.remove('active'); });
+        var id = e.target.getAttribute('id');
+        var m = document.querySelector('.cora-toc-panel a[href="#' + id + '"]');
+        if (m) m.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+  document.querySelectorAll('h2[id], h3[id]').forEach(function(h) {
+    observer.observe(h);
+  });
+})();
+</script>
+
+</body>
+</html>

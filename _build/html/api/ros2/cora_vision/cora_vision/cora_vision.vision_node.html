@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cora_vision.vision_node module &mdash; cora_vision 0.0.0 documentation</title>
+      
+      
+
+  
+  
+        <script src="_static/jquery.js?v=8dae8fb0"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=7026087e"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Standard Documents" href="standards.html" />
+    <link rel="prev" title="cora_vision.aruco module" href="cora_vision.aruco.html" /> 
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="../../../../_static/cora.css">
+</head>
+
+
+<body>
+
+<header class="cora-topbar">
+  <div class="cora-topbar-logo">
+    <a href="../../../../index.html">
+      <div class="cora-logo-mark">CORA</div>
+      <div class="cora-logo-sub">Docs</div>
+    </a>
+  </div>
+  <div class="cora-topbar-search">
+    <form class="cora-search-form" action="../../../../../../search.html" method="get">
+      <input class="cora-search-input" type="text" name="q"
+             placeholder="Search documentation…" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+  </div>
+  <div class="cora-topbar-meta">
+    <span class="cora-version-badge">v0.1</span>
+    <a class="cora-topbar-link"
+       href="https://github.com/your-org/cora">GitHub</a>
+    <a class="cora-topbar-link"
+       href="../../../../../../pages/changelog.html">Changelog</a>
+  </div>
+</header>
+
+<div class="cora-layout">
+
+  <nav class="cora-sidebar" id="cora-sidebar">
+    <div class="cora-nav-section open">
+      <div class="cora-nav-section-header" onclick="coraToggleSection(this)">
+        <span class="cora-nav-section-label">Contents</span>
+        <span class="cora-chevron">▶</span>
+      </div>
+      <div class="cora-nav-items">
+        <a class="cora-nav-item" href="modules.html"><span class="cora-nav-icon"></span> Python API</a>
+        <a class="cora-nav-item" href="standards.html"><span class="cora-nav-icon"></span> Standard Documents</a>
+        <a class="cora-nav-item" href="genindex.html"><span class="cora-nav-icon"></span> Index</a>
+      </div>
+    </div>
+    <hr class="cora-nav-divider">
+  </nav>
+
+  <main class="cora-main">
+    <div class="cora-content">
+<div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">cora_vision</a></li>
+          <li class="breadcrumb-item"><a href="cora_vision.html">cora_vision package</a></li>
+      <li class="breadcrumb-item active">cora_vision.vision_node module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cora_vision.vision_node.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-cora_vision.vision_node">
+<span id="cora-vision-vision-node-module"></span><h1>cora_vision.vision_node module<a class="headerlink" href="#module-cora_vision.vision_node" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="cora_vision.vision_node.VisionNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cora_vision.vision_node.</span></span><span class="sig-name descname"><span class="pre">VisionNode</span></span><a class="headerlink" href="#cora_vision.vision_node.VisionNode" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LifecycleNode</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_vision.vision_node.VisionNode.on_activate">
+<span class="sig-name descname"><span class="pre">on_activate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LifecycleState</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_vision.vision_node.VisionNode.on_activate" title="Link to this definition"></a></dt>
+<dd><p>Handle an activating transition.</p>
+<p>This is the default on_activate() callback.
+It will call all on_activate() callbacks of managed entities, giving up at the first
+entity that returns TransitionCallbackReturn.FAILURE or TransitionCallbackReturn.ERROR.</p>
+<p>It’s possible to override this callback if the default behavior is not desired.
+If you only want to extend what this callback does, make sure to call
+super().on_activate() in derived classes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_vision.vision_node.VisionNode.on_cleanup">
+<span class="sig-name descname"><span class="pre">on_cleanup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LifecycleState</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_vision.vision_node.VisionNode.on_cleanup" title="Link to this definition"></a></dt>
+<dd><p>Handle a cleaning up transition.</p>
+<p>This is the default on_cleanup() callback.
+It will call all on_cleanup() callbacks of managed entities, giving up at the first
+entity that returns TransitionCallbackReturn.FAILURE or TransitionCallbackReturn.ERROR.</p>
+<p>It’s possible to override this callback if the default behavior is not desired.
+If you only want to extend what this callback does, make sure to call
+super().on_cleanup() in derived classes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_vision.vision_node.VisionNode.on_configure">
+<span class="sig-name descname"><span class="pre">on_configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LifecycleState</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_vision.vision_node.VisionNode.on_configure" title="Link to this definition"></a></dt>
+<dd><p>Handle a configuring transition.</p>
+<p>This is the default on_configure() callback.
+It will call all on_configure() callbacks of managed entities, giving up at the first
+entity that returns TransitionCallbackReturn.FAILURE or TransitionCallbackReturn.ERROR.</p>
+<p>It’s possible to override this callback if the default behavior is not desired.
+If you only want to extend what this callback does, make sure to call
+super().on_configure() in derived classes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cora_vision.vision_node.VisionNode.on_deactivate">
+<span class="sig-name descname"><span class="pre">on_deactivate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LifecycleState</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cora_vision.vision_node.VisionNode.on_deactivate" title="Link to this definition"></a></dt>
+<dd><p>Handle a deactivating transition.</p>
+<p>This is the default on_deactivate() callback.
+It will call all on_deactivate() callbacks of managed entities, giving up at the first
+entity that returns TransitionCallbackReturn.FAILURE or TransitionCallbackReturn.ERROR.</p>
+<p>It’s possible to override this callback if the default behavior is not desired.
+If you only want to extend what this callback does, make sure to call
+super().on_deactivate() in derived classes.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+    </div>
+  </main>
+
+  <aside class="cora-toc-panel" id="cora-toc-panel">
+    <div class="cora-toc-panel-label">On this page</div>
+
+  </aside>
+
+</div>
+
+
+<script>
+(function() {
+  // Highlight active TOC link on scroll
+  var links = document.querySelectorAll('.cora-toc-panel a');
+  if (!links.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        links.forEach(function(l) { l.classList.remove('active'); });
+        var id = e.target.getAttribute('id');
+        var m = document.querySelector('.cora-toc-panel a[href="#' + id + '"]');
+        if (m) m.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+  document.querySelectorAll('h2[id], h3[id]').forEach(function(h) {
+    observer.observe(h);
+  });
+})();
+</script>
+
+</body>
+</html>

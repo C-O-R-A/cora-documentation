@@ -1,0 +1,7 @@
+cora\_vision.vision\_node module
+================================
+
+.. automodule:: cora_vision.vision_node
+   :members:
+   :undoc-members:
+   :show-inheritance:
