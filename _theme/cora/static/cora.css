@@ -339,8 +339,8 @@ body {
   border-left-color: var(--accent);
   font-weight: 500;
 }
-.cora-toc-panel ul li ul li a {
-  padding-left: 20px;  /* level 2 indent */
+.cora-toc-panel ul li ul li ul li ul li ul li a {
+  padding-left: 32px;
 }
 
 /* ── Page eyebrow ─────────────────────────────────────────────────── */
