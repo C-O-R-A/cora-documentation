@@ -1,50 +1,57 @@
 # Quickstart
 
-From zero to a simulated running arm in under 30 minutes.
 
-## 1. Clone the repository
+## Simulation (linux required)
+
+### 1.1 Clone the simulation repository
 
 ```bash
-git clone https://github.com/your-org/cora.git
-cd cora
-
-# Configurator frontend
-cd configurator && npm install && cd ..
-
-# Python SDK (codi)
-cd codi && pip install -e ".[dev]" && cd ..
+cd /ros2_ws/src
+git clone https://github.com/C-O-R-A/cora_desktop.git \
+colcon build --symlink-install
 ```
 
-## 2. Start the dev servers
+### 1.2 Install codi
 
 ```bash
-# Terminal 1 — backend API
-cd configurator && docker-compose up
-
-# Terminal 2 — frontend
-cd configurator && npm run dev
+cd ../codi
+git clone https://github.com/C-O-R-A/CoDI.git
+pip install git+https://github.com/C-O-R-A/CoDI.git
 ```
 
-## 3. Configure your first arm
+### 2. Start the simulation
 
-Open `http://localhost:5173`. Add joints using the sidebar panel.
-The 3D viewport updates live.
-
-## 4. Export your package
-
-Click **Export**. You'll receive a ZIP containing STEP files, a URDF,
-MoveIt SRDF, and a ROS 2 package ready to build.
-
-## 5. Launch in simulation
+In terminal 1
 
 ```bash
-cd ~/ros2_ws
-colcon build --packages-select cora_robot
-source install/setup.bash
-ros2 launch cora_robot sim.launch.py
+ros2 launch cora_gazebo gazebo.launch.py
 ```
 
 :::{tip} Expected result
 Gazebo opens with your configured arm. RViz2 shows the robot model with
 MoveIt 2 loaded. You can send joint goals from the Motion Planning panel.
 :::
+
+![gazebo simulation](../../_static/assets/screenshots/gazebo_viz.png)
+
+### 3. Run an example
+
+In terminal 2
+
+```bash
+python3 examples/teleop_keyboard.py
+```
+
+### 4. Control with teleop
+
+Control the arm with the following schema
+
+| button | Original design |
+| --- | --- |
+| w | forward (+x) |
+| a | left (-y) |
+| x | backwards (-x) |
+| d | right (+y) |
+| s | switch control modes |
+
+
