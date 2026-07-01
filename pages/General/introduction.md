@@ -46,13 +46,13 @@ A lot of documentation is available for this platform, however the ones most rel
 <div class="card-grid">
   <a class="card" href="pages/Configurator/configurator.html">
     <div class="card-icon">
-    <img src="../../_static/assets/icons/configurator.png" 
+    <img src="_static/assets/icons/configurator.png" 
     style="width:32px !important;height:32px !important;object-fit:contain;object-position:center;">
     </div>
     <div class="card-title">Configurator</div>
     <div class="card-desc">Browser-based app to compose joints, set parameters, and preview the arm in 3D.</div>
   </a>
-  <a class="card" href="pages/api/ros2-setup.html">
+  <a class="card" href="pages/Api/ros2-setup.html">
     <div class="card-icon" style="display:flex;gap:6px;align-items:center;">
       <!-- <img src="https://www.onshape.com/favicon.ico" style="width:28px;height:28px;object-fit:contain;"> -->
       <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Ros_logo.svg" 
@@ -61,7 +61,7 @@ A lot of documentation is available for this platform, however the ones most rel
     <div class="card-title">Robot Software</div>
     <div class="card-desc">ROS2 Packages documentation</div>
   </a>
-  <a class="card" href="Api/python/index.html">
+  <a class="card" href="api/python/index.html">
     <div class="card-icon">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
     style="width:32px !important;height:32px !important;object-fit:contain;object-position:center;">
@@ -71,7 +71,7 @@ A lot of documentation is available for this platform, however the ones most rel
   </a>
   <a class="card" href="pages/General/joints.html">
     <div class="card-icon">
-    <img src="../../_static/assets/icons/joints.png"
+    <img src="_static/assets/icons/joints.png"
     style="width:32px !important;height:32px !important;object-fit:contain;object-position:center;">
     </div>
     <div class="card-title">Joints</div>
