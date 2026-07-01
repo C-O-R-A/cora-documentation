@@ -46,36 +46,36 @@ A lot of documentation is available for this platform, however the ones most rel
 <div class="card-grid">
   <a class="card" href="pages/Configurator/configurator.html">
     <div class="card-icon">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" 
+    <img src="../../_static/assets/icons/configurator.png" 
     style="width:32px !important;height:32px !important;object-fit:contain;object-position:center;">
     </div>
     <div class="card-title">Configurator</div>
     <div class="card-desc">Browser-based app to compose joints, set parameters, and preview the arm in 3D.</div>
   </a>
-  <a class="card" href="pages/Configurator/export.html">
+  <a class="card" href="pages/api/ros2-setup.html">
     <div class="card-icon" style="display:flex;gap:6px;align-items:center;">
       <!-- <img src="https://www.onshape.com/favicon.ico" style="width:28px;height:28px;object-fit:contain;"> -->
       <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Ros_logo.svg" 
-      style="width:80px !important;height:80px;object-fit:contain;filter:invert(1);">
+      style="width:80px !important;height:40px;object-fit:contain;filter:invert(1);">
     </div>
-    <div class="card-title">Export Pipeline</div>
-    <div class="card-desc">Auto-generates STEP, URDF/XACRO, MoveIt SRDF, ros2_control YAML, and Python SDK config.</div>
+    <div class="card-title">Robot Software</div>
+    <div class="card-desc">ROS2 Packages documentation</div>
   </a>
-  <a class="card" href="pages/Api/simulation.html">
-    <div class="card-icon">
-    <img src="https://gazebosim.org/assets/images/logos/gazebo_vert_pos.svg" 
-     style="width:100px !important;height:100px !important;object-fit:contain;object-position:center;">
-     </div>
-    <div class="card-title">Simulation</div>
-    <div class="card-desc">Gazebo simulation mirrors your exact arm. Validate motion plans before touching hardware.</div>
-  </a>
-  <a class="card" href="pages/Api/sdk.html">
+  <a class="card" href="Api/python/index.html">
     <div class="card-icon">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
     style="width:32px !important;height:32px !important;object-fit:contain;object-position:center;">
+     </div>
+    <div class="card-title">API reference</div>
+    <div class="card-desc">API reference of CoDI.</div>
+  </a>
+  <a class="card" href="pages/General/joints.html">
+    <div class="card-icon">
+    <img src="../../_static/assets/icons/joints.png"
+    style="width:32px !important;height:32px !important;object-fit:contain;object-position:center;">
     </div>
-    <div class="card-title">Python SDK</div>
-    <div class="card-desc">High-level SDK for joint control and motion planning without writing ROS 2 directly.</div>
+    <div class="card-title">Joints</div>
+    <div class="card-desc">Specs and build guide for each joint</div>
   </a>
 </div>
 

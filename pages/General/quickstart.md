@@ -32,7 +32,9 @@ Gazebo opens with your configured arm. RViz2 shows the robot model with
 MoveIt 2 loaded. You can send joint goals from the Motion Planning panel.
 :::
 
-![gazebo simulation](../../_static/assets/screenshots/gazebo_viz.png)
+<div>
+    <img src="../../_static/assets/screenshots/gazebo_viz.png" alt="Gazebo and Rviz" style="width:100%;border-radius:6px;margin-bottom:12px;">
+</div>
 
 ### 3. Run an example
 
@@ -46,7 +48,7 @@ python3 examples/teleop_keyboard.py
 
 Control the arm with the following schema
 
-| button | Original design |
+| button | direction |
 | --- | --- |
 | w | forward (+x) |
 | a | left (-y) |
