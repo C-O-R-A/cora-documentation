@@ -5,7 +5,7 @@ CORA
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 4
    :caption: Get Started
 
    pages/General/installation
@@ -14,7 +14,7 @@ CORA
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 4
    :caption: System Overview
 
    pages/General/architecture
@@ -22,7 +22,7 @@ CORA
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 4
    :caption: Configurator
 
    pages/Configurator/configurator
@@ -31,7 +31,7 @@ CORA
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 4
    :caption: Build Guide
 
    pages/Build/bom
@@ -40,7 +40,7 @@ CORA
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 4
    :caption: Software
 
    pages/Api/ros2-setup
@@ -50,7 +50,7 @@ CORA
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 4
    :caption: API Reference
 
    api/python/index

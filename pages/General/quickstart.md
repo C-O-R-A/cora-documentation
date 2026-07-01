@@ -50,7 +50,7 @@ Control the arm with the following schema
 
 | button | direction |
 | --- | --- |
-| w | forward (+x) |
+| w | forwards (+x) |
 | a | left (-y) |
 | x | backwards (-x) |
 | d | right (+y) |
