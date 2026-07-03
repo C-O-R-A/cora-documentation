@@ -27,7 +27,11 @@ jobs:
       - name: Build docs
         run: |
           make _sphinx
-
+      - name: Verify build output
+        run: |
+          ls -lah _build/html
+          test -f _build/html/index.html
+          du -sh _build/html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
