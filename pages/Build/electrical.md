@@ -1,7 +1,13 @@
 # Electrical & Connectors
 
 Each joint has four connectors on its back shell: two for the 60 A power
-chain (XT60, in + out) and two for CAN bus (M12 A-coded 5-pin, in + out).
+chain (XT60, in + out) and two for CAN bus and IO (Ethernet RJ45).
+
+## Wiring
+<div>
+    <img src="../../_static/assets/diagrams/joint_electronics.png" alt="wiring" style="width:100%;border-radius:6px;margin-bottom:12px;">
+</div>
+
 
 ## Connector selection rationale
 

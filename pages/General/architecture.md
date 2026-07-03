@@ -22,3 +22,9 @@ cora/
 ├── cora_docs/             # This documentation
 └── odesc_config/          # ODrive / CAN protocol configuration
 ```
+
+## Architecture
+
+<div>
+    <img src="../../_static/assets/diagrams/architecture.png" alt="wiring" style="width:100%;border-radius:6px;margin-bottom:12px;">
+</div>

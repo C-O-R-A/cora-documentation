@@ -14,30 +14,12 @@ Cora is an open source and modular robotic platform. This project focuses on the
 
 ## Workflow
 
-Building and programming your own CORA involves several steps as follows:
+Designing, Building and programming your own arm involves several steps as follows:
 
-```mermaid
-flowchart LR
-    A[Configure CORA] --> B[Export Configuration]
+<div>
+    <img src="../../_static/assets/diagrams/workflow.png" alt="wiring" style="width:100%;border-radius:6px;margin-bottom:12px;">
+</div>
 
-    B --> B1[URDF]
-    B --> B2[MoveIt Configuration]
-    B --> B3[ROS 2 Control Configuration]
-    B --> B4[Onshape Document]
-
-    B --> D[Manufacture Components]
-    D --> E[Assemble Robot]
-
-    B1 --> F[Install Software]
-    B2 --> F
-    B3 --> F
-    B4 --> F
-
-    E --> F
-
-    F --> G[Set Up Robot Using Generated Files]
-    G --> H[Ready to Program and Operate CORA]
-```
 
 ## Main Documentation Sources
 
