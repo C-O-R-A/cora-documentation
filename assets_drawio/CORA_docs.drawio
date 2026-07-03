@@ -438,7 +438,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="YpA_yS48OAK0GsCXTOFl" name="Joint Wiring">
-    <mxGraphModel dx="2331" dy="35" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1261" dy="-785" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -615,7 +615,7 @@
         <mxCell id="Olt_S_RU_vwCvIp3UezA-5" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Olt_S_RU_vwCvIp3UezA-4">
           <mxGeometry width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Olt_S_RU_vwCvIp3UezA-6" value="GND" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="Olt_S_RU_vwCvIp3UezA-5">
+        <mxCell id="Olt_S_RU_vwCvIp3UezA-6" value="&lt;font face=&quot;Courier New&quot;&gt;GND&lt;/font&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="Olt_S_RU_vwCvIp3UezA-5">
           <mxGeometry width="40" height="40" as="geometry">
             <mxRectangle width="40" height="40" as="alternateBounds" />
           </mxGeometry>
@@ -647,7 +647,7 @@
         <mxCell id="Olt_S_RU_vwCvIp3UezA-13" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Olt_S_RU_vwCvIp3UezA-4">
           <mxGeometry y="160" width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Olt_S_RU_vwCvIp3UezA-14" value="&lt;font face=&quot;Courier New&quot;&gt;GND&lt;/font&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="Olt_S_RU_vwCvIp3UezA-13">
+        <mxCell id="Olt_S_RU_vwCvIp3UezA-14" value="&lt;font face=&quot;Courier New&quot;&gt;5V&lt;/font&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="Olt_S_RU_vwCvIp3UezA-13">
           <mxGeometry width="40" height="40" as="geometry">
             <mxRectangle width="40" height="40" as="alternateBounds" />
           </mxGeometry>
