@@ -1,58 +1,77 @@
-# Python SDK (codi)
+# Python SDK — codi
 
-`codi` provides a high-level interface for joint control and motion
-sequencing without writing ROS 2 directly. It wraps the generated
-`ros2_control` hardware interfaces.
+`codi` provides a high-level TCP interface for controlling and monitoring
+a CORA robot without writing ROS 2 directly.
 
 ## Installation
 
 ```bash
 # From source (recommended during development)
-cd codi && pip install -e ".[dev]"
+cd codi && pip install -e .
 
 # Once published
 pip install codi
 ```
 
-## Basic usage
+## Basic usage — client
 
 ```python
-from codi import CoraArm
+from codi import CoraClient
 
-arm = CoraArm("desktop_3dof_v1")
-arm.connect()
+arm = CoraClient(filepath="config.yaml")
+arm._activate()
 
-# Move a single joint
-arm.move_joint("shoulder_pan", position=1.57)  # radians
+# Send a Cartesian pose command
+arm.send_command(pose_command=(0.1, 0.0, 0.3, 0.0, 0.0, 0.0))
 
-# Named pose from SRDF
-arm.go_to_pose("home")
+# Send a joint-space command
+arm.send_command(joint_command=(0.0, 1.57, -0.5, 0.0, 0.0, 0.0))
 
-# Cartesian waypoints (requires MoveIt 2)
-arm.move_cartesian([
-    (0.1, 0.0, 0.3),
-    (0.2, 0.1, 0.3),
-])
+# Read latest state
+state = arm.get_states()
+print(state.joint_states)
+print(state.transforms)
 
-arm.disconnect()
+# Read latest video frame (requires use_camera=True)
+frame = arm.get_frame()
 ```
 
-## Context manager
+## Basic usage — server
 
 ```python
-with CoraArm("desktop_3dof_v1") as arm:
-    arm.go_to_pose("home")
-    arm.move_joint("elbow", position=-0.5)
+from codi import CoraServer
+
+server = CoraServer(filepath="config.yaml")
+server.start()
+
+# In your control loop:
+server.send_state(transforms, jointstates, status)
+server.send_frame(image)
+
+command = server.get_command()
+config  = server.get_config()
 ```
 
-:::{note} ROS 2 node lifecycle
-`CoraArm` manages its own `rclpy` node. `connect()` calls `rclpy.init()`
-if not already initialised. Pass `init_ros=False` when embedding inside
-an existing ROS 2 node.
+## Config file
+
+```yaml
+host: 192.168.1.100
+ports:
+  command_port: 5000
+  states_port:  5001
+  video_port:   5002
+  config_port:  5003
+```
+
+:::{note} Connection lifecycle
+`CoraClient._activate()` launches a background supervisor thread that
+automatically reconnects if the server drops. `CoraServer.start()` does
+the same on the server side — it re-accepts a new client after any
+disconnect.
 :::
 
 ## Full API reference
 
 See [Python SDK API Reference](../api/python/index.rst) for all classes,
-methods, parameters, and exceptions — generated directly from
+methods, parameters, and exceptions generated directly from
 `codi/src/` docstrings.
