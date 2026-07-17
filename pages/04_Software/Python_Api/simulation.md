@@ -5,30 +5,22 @@ plans in Gazebo before touching hardware to catch configuration errors early.
 
 ## Launching
 
+The following command launches the robot in an empty world
+
 ```bash
 source /opt/ros/jazzy/setup.bash
-source ~/ros2_ws/install/setup.bash
-ros2 launch cora_robot sim.launch.py
+cd ~/cora_desktop
+source install/setup.bash
+ros2 launch cora_gazebo gazebo.launch.py
 ```
 
-## Sim clock
+To choose a world the robot should spawn in, pass it as launch arg
 
-To suppress the RViz2 sim-clock warning, set `use_sim_time: true`
-for the RViz2 node in your launch file:
-
-```python
-rviz_node = Node(
-    package='rviz2',
-    executable='rviz2',
-    parameters=[{'use_sim_time': True}],
-)
+```bash
+ros2 launch cora_gazebo gazebo.launch.py gazebo_world:=../chess/gazebo/worlds/chess/chess.sdf
 ```
 
-## Motion planning with CHOMP
+## Custom Worlds
 
-CHOMP is enabled by default. To switch to OMPL, edit
-`config/moveit/planning_pipeline.yaml`:
-
-```yaml
-planning_plugin: ompl_interface/OMPLPlanner
-```
+Plenty of use cases exist to make gazebo worlds. As a bonus to this package,
+a blender script is used to export from blender to gazebo classic or ignition.
