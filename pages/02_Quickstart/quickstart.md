@@ -1,5 +1,6 @@
 # Quickstart
 
+A quick installation and test to see if 
 
 ## Simulation (linux required)
 
@@ -8,13 +9,12 @@
 ```bash
 cd /ros2_ws/src
 git clone https://github.com/C-O-R-A/cora_desktop.git \
-colcon build --symlink-install
+bash cora_desktop/install.sh
 ```
 
 ### 1.2 Install codi
 
 ```bash
-cd ../codi
 git clone https://github.com/C-O-R-A/CoDI.git
 pip install git+https://github.com/C-O-R-A/CoDI.git
 ```
@@ -28,7 +28,7 @@ ros2 launch cora_gazebo gazebo.launch.py
 ```
 
 :::{tip} Expected result
-Gazebo opens with your configured arm. RViz2 shows the robot model with
+Gazebo opens with a default configured arm. RViz2 shows the robot model with
 MoveIt 2 loaded. You can send joint goals from the Motion Planning panel.
 :::
 

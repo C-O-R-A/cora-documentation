@@ -1,16 +1,15 @@
-# Primary documentation and instructions
+# CORA
 
 CORA (Collaborative Open Robotic Arms) is a modular cobot platform. Design your arm in the
 configurator, generate matching CAD and ROS 2 software automatically, build it, and run it.
 
 :::{note} Alpha release
-CORA is under active development. The joint manifest schema is stable; the configurator
-UI and Python SDK are in progress. APIs may change between minor versions.
+The project is currently under active development, APIs may change between minor versions.
 :::
 
 ## What is CORA?
 
-Cora is an open source and modular robotic platform. This project focuses on the design and  development of interchangable cobot joints. Each joint can be swapped for another one with minimal effort. The on-board robot software is also reconfigurable to match the real robot configuration.
+Cora is an open source and modular robotic system. This project focuses on the design and  development of interchangable cobot joints. Each joint can be swapped for another one with minimal effort. The on-board robot software is also reconfigurable to match any robot configuration.
 
 ## Workflow
 
@@ -21,12 +20,12 @@ Designing, Building and programming your own arm involves several steps as follo
 </div>
 
 
-## Main Documentation Sources
+## Pipeline
 
-A lot of documentation is available for this platform, however the ones most relevant to a user are the following.
+A lot of documentation is available for this platform, however it is advised to read the following.
 
 <div class="card-grid">
-  <a class="card" href="pages/Configurator/configurator.html">
+  <a class="card" href="pages/03_Configurator/configurator.html">
     <div class="card-icon">
     <img src="_static/assets/icons/configurator.png" 
     style="width:32px !important;height:32px !important;object-fit:contain;object-position:center;">
@@ -61,11 +60,11 @@ A lot of documentation is available for this platform, however the ones most rel
   </a>
 </div>
 
-## Design principles
+## Projects
 
-| Principle | What it means in practice |
-|-----------|--------------------------|
-| **Schema-first** | The joint manifest JSON schema is the contract between the configurator, the export pipeline, and the physical build. Lock it before implementing anything else. |
-| **Drop-in extensibility** | Adding a new joint type requires only a folder: manifest, mesh files, and a CadQuery script. No platform code changes. |
-| **Zero manual integration** | Every exported software package is generated directly from the hardware configuration. The URDF, SRDF, and control YAML always match the physical arm. |
-| **REP-103 everywhere** | Z-up, metres, radians throughout — no unit conversions anywhere in the stack. |
+Some examples of robots built with our system.
+
+## Joints
+
+All the joints in our library.
+[]()

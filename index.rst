@@ -1,6 +1,6 @@
 CORA
 ==================
-.. include:: pages/General/introduction.md
+.. include:: pages/01_Intro/introduction.md
    :parser: myst_parser.sphinx_
 
 .. toctree::
@@ -8,26 +8,28 @@ CORA
    :maxdepth: 4
    :caption: Get Started
 
-   pages/General/installation
-   pages/General/quickstart
-   pages/General/troubleshooting
-
-.. toctree::
-   :hidden:
-   :maxdepth: 4
-   :caption: System Overview
-
-   pages/General/architecture
-   pages/General/joints
+   pages/02_Quickstart/quickstart
+   pages/02_Quickstart/troubleshooting
 
 .. toctree::
    :hidden:
    :maxdepth: 4
    :caption: Configurator
 
-   pages/Configurator/configurator
-   pages/Configurator/schema
-   pages/Configurator/export
+   pages/03_Configurator/configurator
+   pages/03_Configurator/joint-custom
+   pages/03_Configurator/schema.md
+
+
+.. toctree::
+   :hidden:
+   :maxdepth: 4
+   :caption: API's
+
+   pages/04_Software/installation
+   pages/04_Software/Architecture
+   pages/04_Software/index
+
 
 .. toctree::
    :hidden:
@@ -43,10 +45,6 @@ CORA
    :maxdepth: 4
    :caption: Software
 
-   pages/Api/ros2-setup
-   pages/Api/moveit
-   pages/Api/simulation
-   pages/Api/sdk
 
 .. toctree::
    :hidden:
