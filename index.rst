@@ -36,14 +36,9 @@ CORA
    :maxdepth: 4
    :caption: Build Guide
 
-   pages/Build/bom
-   pages/Build/build
-   pages/Build/electrical
-
-.. toctree::
-   :hidden:
-   :maxdepth: 4
-   :caption: Software
+   pages/05_Build_Guide/bom
+   pages/05_Build_Guide/build
+   pages/05_Build_Guide/electrical
 
 
 .. toctree::
