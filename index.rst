@@ -30,7 +30,7 @@ CORA
    pages/04_Software/Architecture
    pages/04_Software/index
 
-
+https://chatgpt.com/
 .. toctree::
    :hidden:
    :maxdepth: 4
