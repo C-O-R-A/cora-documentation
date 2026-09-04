@@ -16,6 +16,6 @@ simultaneously. The two-connector-per-side approach is the practical outcome:
 
 | Function | Connector | Rating |
 |----------|-----------|--------|
-| Power (50 A) | `XT90` | 50 A continuous |
-| CAN bus | `RJ45` "Ethernet" | Two-wire CAN + shield |
+| Power (50 A) | `XT60` | 50 A continuous |
+| CAN bus | Ethernet Splitter | Two-wire CAN + shield |
 
