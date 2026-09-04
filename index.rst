@@ -20,6 +20,14 @@ CORA
    pages/03_Configurator/joint-custom
    pages/03_Configurator/schema.md
 
+.. toctree::
+   :hidden:
+   :maxdepth: 4
+   :caption: Build Guide
+
+   pages/05_Build_Guide/bom
+   pages/05_Build_Guide/Assembly/Assembly
+   pages/05_Build_Guide/electrical
 
 .. toctree::
    :hidden:
@@ -29,17 +37,6 @@ CORA
    pages/04_Software/installation
    pages/04_Software/Architecture
    pages/04_Software/index
-
-https://chatgpt.com/
-.. toctree::
-   :hidden:
-   :maxdepth: 4
-   :caption: Build Guide
-
-   pages/05_Build_Guide/bom
-   pages/05_Build_Guide/build
-   pages/05_Build_Guide/electrical
-
 
 .. toctree::
    :hidden:
